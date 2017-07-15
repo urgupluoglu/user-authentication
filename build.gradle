@@ -1,0 +1,41 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-undertow')
+	runtime('org.postgresql:postgresql')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	compile('org.springframework.boot:spring-boot-starter-mail')
+
+	// Apache Commons
+	compile 'commons-validator:commons-validator:1.6'
+
+	// Log4j Logging Framework - API
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+	// Log4j Logging Framework - Core
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+}
