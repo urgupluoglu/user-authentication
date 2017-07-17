@@ -3,6 +3,8 @@ package com.badboyz.general;
 import com.badboyz.Utility;
 import com.badboyz.entity.User;
 import com.badboyz.repository.UserRepo;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +21,21 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class Tokenizer {
 
+    private Logger LOGGER = LogManager.getLogger(Tokenizer.class);
+    private static ConcurrentHashMap<String, JWT> bucket = new ConcurrentHashMap<>();
+
     @Autowired
     UserRepo userRepo;
 
-    public static ConcurrentHashMap<String, JWT> bucket = new ConcurrentHashMap<>();
-
     public synchronized User getUserByToken(String token) {
+
+        if(token == null)
+            return null;
+
         JWT jwt = bucket.get(token);
+        if(jwt == null)
+            return null;
+
         return userRepo.findOne(jwt.getUserId());
     }
 

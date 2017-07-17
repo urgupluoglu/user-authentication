@@ -1,10 +1,13 @@
 package com.badboyz.entity;
 
+import com.badboyz.general.HashOperation;
 import com.badboyz.general.ResponseObjects;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by yusuf on 4/26/2016.
@@ -139,5 +142,17 @@ public class User implements Serializable {
 
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
+    }
+
+    public void setHashCode(HashOperation op) {
+        if(userDetail == null)
+            userDetail = new UserDetail();
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.HOUR_OF_DAY, 1);
+        userDetail.setHashCode(op.generateHash());
+        userDetail.setHashCodeExpiration(cal.getTime());
+
     }
 }

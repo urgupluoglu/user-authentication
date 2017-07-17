@@ -10,4 +10,5 @@ public interface UserRepo extends CrudRepository<User, Long> {
 
     User getByEmailAndActiveIsTrue(String email);
 
+    User getByUserDetailHashCode(String hash);
 }

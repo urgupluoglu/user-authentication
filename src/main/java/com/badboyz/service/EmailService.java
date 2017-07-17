@@ -18,7 +18,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(EmailService.class);
 
     public boolean sendEmail(String email, String sender, String subject, String body) {
 

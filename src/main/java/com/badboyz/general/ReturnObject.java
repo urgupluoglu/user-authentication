@@ -7,14 +7,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 
 import java.io.Serializable;
 
 /**
  * Created by yusuf on 4/26/2016.
  */
-@Controller
 public class ReturnObject implements Serializable {
 
     private static final Logger LOGGER = LogManager.getLogger();
