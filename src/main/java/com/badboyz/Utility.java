@@ -35,7 +35,18 @@ public class Utility {
     public static int LINK_EXPIRED_CODE = 108;
     public static String LINK_EXPIRED_MSG = "The link you are tyring to use is expired. Please start over";
 
+    public static int NO_ACTIVE_USER_CODE = 109;
+    public static String NO_ACTIVE_USER_MSG = "There is no active user associated with this email";
 
+    public static int FORGOT_PASSWORD_WAIT_CODE = 111;
+    public static String FORGOT_PASSWORD_WAIT_MSG = "Wait a while before another reset password attempt";
+
+
+
+
+    /**
+     *  Email Constants
+     */
     public static String EMAIL_SENDER = "xxxxx@gmail.com";
 
     public static String SIGN_UP_EMAIL_SUBJECT = "You just signed up!";
@@ -43,14 +54,28 @@ public class Utility {
             "Please visit following link to activate your account:\n" +
             MAIN_LINK + "/activation/";
 
-    public static String UNLOCK_EMAIL_SUBJECT = "Your account is unlocked!";
-    public static String UNLOCK_EMAIL_BODY = "Hello\nYour account is successfully unlocked.\n" +
-            "For login page:\n" +
-            MAIN_LINK + "/login/";
+    public static String FORGOT_PASSWORD_EMAIL_SUBJECT = "One more step to reset your password!";
+    public static String FORGOT_PASSWORD_EMAIL_BODY = "Howdy!\nTo reset your password, please click the link below and " +
+            "enter your new password\n" +
+            MAIN_LINK + "/resetPassword/";
+
+    public static String PASSWORD_RESET_EMAIL_SUBJECT = "One more step to reset your password!";
+    public static String PASSWORD_RESET_EMAIL_BODY = "Howdy!\nYour password is reset successfully\n" +
+            "You can login using your new password:\n" + MAIN_LINK + "/login/\n\n" +
+            "Your new password (masked for security concerns): ";
 
     public static String ACTIVATE_EMAIL_SUBJECT = "Your account is activated!";
     public static String ACTIVATE_EMAIL_BODY = "Hi there!\nYour account is just activated by a system administrator.\n" +
             "Have fun..";
 
     public static int TOKEN_EXPIRATION_IN_MINUTES = 60 * 8;
+
+    public static synchronized String maskPassword(String password) {
+        String maskedPassword = password.substring(0, 2);
+        for(int i=2; i<password.length() - 2; i++)
+            maskedPassword += "*";
+        maskedPassword += password.substring(-1);
+
+        return maskedPassword;
+    }
 }
