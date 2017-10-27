@@ -1,5 +1,6 @@
 package com.badboyz.entity;
 
+import com.badboyz.enumeration.RegistrationType;
 import com.badboyz.general.HashOperation;
 import com.badboyz.general.ResponseObjects;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -52,6 +53,9 @@ public class User implements Serializable {
     @OneToOne
     @JoinColumn(name = "SUPERUSERID", referencedColumnName = "ID")
     private User superUser;
+
+    @Enumerated(EnumType.ORDINAL)
+    private RegistrationType registrationType;
 
     @OneToOne(cascade = CascadeType.ALL)
     private UserDetail userDetail = new UserDetail();
@@ -134,6 +138,14 @@ public class User implements Serializable {
 
     public void setSuperUser(User superUser) {
         this.superUser = superUser;
+    }
+
+    public RegistrationType getRegistrationType() {
+        return registrationType;
+    }
+
+    public void setRegistrationType(RegistrationType registrationType) {
+        this.registrationType = registrationType;
     }
 
     public UserDetail getUserDetail() {

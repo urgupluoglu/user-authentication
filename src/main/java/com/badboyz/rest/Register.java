@@ -2,6 +2,7 @@ package com.badboyz.rest;
 
 import com.badboyz.Utility;
 import com.badboyz.entity.User;
+import com.badboyz.enumeration.RegistrationType;
 import com.badboyz.general.HashOperation;
 import com.badboyz.general.ReturnObject;
 import com.badboyz.repository.UserRepo;
@@ -72,6 +73,7 @@ public class Register {
             user.setHashCode(op);
         }
 
+        user.setRegistrationType(RegistrationType.LOCAL);
         userRepo.save(user);
         LOGGER.debug(user);
 

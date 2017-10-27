@@ -38,9 +38,11 @@ public class Utility {
     public static int NO_ACTIVE_USER_CODE = 109;
     public static String NO_ACTIVE_USER_MSG = "There is no active user associated with this email";
 
-    public static int FORGOT_PASSWORD_WAIT_CODE = 111;
+    public static int FORGOT_PASSWORD_WAIT_CODE = 110;
     public static String FORGOT_PASSWORD_WAIT_MSG = "Wait a while before another reset password attempt";
 
+    public static int REGISTRATION_FAILED_CODE = 111;
+    public static String REGISTRATION_FAILED_MSG = "Registration using a 3rd party failed";
 
 
 
